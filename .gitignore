@@ -1,0 +1,5 @@
+.env
+.*.sw*
+*.log
+config.json
+.vagrant
