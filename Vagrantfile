@@ -26,7 +26,7 @@ Vagrant.configure('2') do |config|
         apt-get update && apt-get install -y python3-pip && pip3 install -U tmn
         (crontab -u root -l; echo "*/2 * * * * bash /apply.sh >> /apply.log 2>&1" ) | crontab -u root -
         source /.env
-        tmn start --name anonymous --pkey ${COINBASE_PRIVATE_KEY} --net testnet
+        tmn start --name anonymous --pkey ${COINBASE_PRIVATE_KEY} --net devnet
       SHELL
 
   end
