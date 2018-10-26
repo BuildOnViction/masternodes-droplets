@@ -1,3 +1,11 @@
 {
-    "doApiToken": "xxx"
+    "doApiToken": "xxx",
+    "nodes": [
+        {
+            "name": "anonymous1",
+            "coinbaseAddress": "xxx",
+            "coinbasePrivateKey": "xxx",
+            "ownerPrivateKey": "xxx"
+        }
+    ]
 }

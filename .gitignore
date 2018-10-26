@@ -1,4 +1,4 @@
-.env
+.env*
 .*.sw*
 *.log
 config.json

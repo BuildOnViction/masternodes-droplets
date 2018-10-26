@@ -3,6 +3,13 @@
 require 'json'
 
 appConfig = JSON.parse(File.read('config.json'))
+node = appConfig['nodes'][0]
+envFile = '.env.' + node['name']
+f = File.new(envFile, 'w')
+f.write('OWNER_PRIVATE_KEY=' + node['ownerPrivateKey'] + "\n")
+f.write('COINBASE_PRIVATE_KEY=' + node['coinbasePrivateKey'] + "\n")
+f.write('COINBASE_ADDRESS=' + node['coinbaseAddress'] + "\n")
+f.close    
 
 Vagrant.configure('2') do |config|
 
@@ -20,7 +27,7 @@ Vagrant.configure('2') do |config|
       end
       config.vm.synced_folder ".", "/vagrant", disabled: true
       config.vm.provision "file", source: "./apply.sh", destination: "/apply.sh"
-      config.vm.provision "file", source: "./.env", destination: "/.env"
+      config.vm.provision "file", source: envFile, destination: "/.env"
       config.vm.provision "shell", inline: <<-SHELL
         curl -sSL https://get.docker.com/ | sh
         apt-get update && apt-get install -y python3-pip && pip3 install -U tmn
