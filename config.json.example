@@ -5,7 +5,8 @@
             "name": "anonymous1",
             "coinbaseAddress": "xxx",
             "coinbasePrivateKey": "xxx",
-            "ownerPrivateKey": "xxx"
+            "ownerPrivateKey": "xxx",
+            "region": "nyc1"
         }
     ]
 }

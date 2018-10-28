@@ -7,8 +7,8 @@ nodes = appConfig['nodes']
 
 Vagrant.configure('2') do |config|
 
-    nodes.each do |node|
-        config.vm.define node['name'] do |config|
+    nodes.each_with_index do |node, index|
+        config.vm.define (node['name'] + index) do |config|
             envFile = '.env.' + node['name']
             f = File.new(envFile, 'w')
             f.write('OWNER_PRIVATE_KEY=' + node['ownerPrivateKey'] + "\n")
@@ -23,7 +23,7 @@ Vagrant.configure('2') do |config|
                 provider.ssh_key_name = "thanhson1085"
                 provider.token = appConfig['doApiToken']
                 provider.image = 'ubuntu-16-04-x64'
-                provider.region = 'nyc1'
+                provider.region = node['region']
                 provider.size = '8gb'
             end
             config.vm.synced_folder ".", "/vagrant", disabled: true
