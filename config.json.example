@@ -1,5 +1,8 @@
 {
     "doApiToken": "xxx",
+    "coinbasePrivateKeySun": "xxx",
+    "coinbasePrivateKeyMoon": "xxx",
+    "coinbasePrivateKeyEarth": "xxx",
     "nodes": [
         {
             "name": "anonymous1",
