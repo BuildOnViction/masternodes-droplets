@@ -5,7 +5,9 @@ services:
   proxy:
     image: tomochain/nginx:latest
     ports:
-      - 443:443
+      - 3000:3000
+      - 3001:3001
+      - 3002:3002
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     deploy:
@@ -25,7 +27,7 @@ services:
     environment:
       MONGODB_URI: mongodb://tomoscan_db:27017/explorer
       REDIS_HOST: tomoscan_redis
-      CLIENT_URL: https://scan.devnet.tomochain.com/
+      CLIENT_URL: http://localhost:3000
       WEB3_URI: http://localhost:8545
       JWT_SECRET_FILE: "$2a$10$zMv2skn0DWEfsZGG91rC/O"
       APP_SECRET_FILE: "$2a$10$zMv2skn0DWEfsZGG91rC/O"
@@ -78,11 +80,10 @@ services:
   tomomaster:
     image: tomochain/tomomaster:latest
     environment:
-      BC_RPC: 'https://devnet.tomochain.com:443'
+      BC_RPC: 'http://locahost:8545'
       BC_NETWORK_ID: 90
-      EXPLORER_URL: 'https://scan.devnet.tomochain.com'
+      EXPLORER_URL: 'http://localhost:3000'
       DB_URI: 'mongodb://tomomaster_db:27017/governance'
-      GRAFANA_URL: 'https://grafana.devnet.tomochain.com'
     deploy:
       placement:
         constraints:
@@ -92,8 +93,8 @@ services:
     image: tomochain/tomomaster:latest
     command: run crawl
     environment:
-      BC_RPC: 'https://devnet.tomochain.com'
-      BC_NETWORK_ID: 90
+      BC_RPC: 'http://localhost:8545'
+      BC_NETWORK_ID: 89
       DB_URI: 'mongodb://tomomaster_db:27017/governance'
       REDIS_HOST: 'tomomaster_redis'
     deploy:
