@@ -31,6 +31,9 @@ Vagrant.configure('2') do |config|
                 provider.size = '8gb'
             end
 
+            config.vm.synced_folder ".", "/vagrant", type: "rsync",
+                rsync__exclude: ".git/"
+
             config.vm.provision "file", source: envFile, destination: "/vagrant/.env"
 
             config.vm.provision "shell", inline: <<-SHELL
