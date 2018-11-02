@@ -3,15 +3,12 @@
 source /.env
 
 nodeContainerId=`docker ps -qf name=tomochain`
-chainBlockNumber=`docker exec ${nodeContainerId} tomo attach https://testnet.tomochain.com --exec 'eth.blockNumber'`
+chainBlockNumber=`docker exec ${nodeContainerId} tomo attach "${RPC_URL}" --exec 'eth.blockNumber'`
 nodeBlockNumber=`docker exec ${nodeContainerId} tomo attach data/tomo.ipc --exec 'eth.blockNumber'`
 echo $chainBlockNumber
 echo $nodeBlockNumber
  
 if [ "${chainBlockNumber}" == "${nodeBlockNumber}" ]; then
-	# appy to become a candidate
-    TOMOMASTER="https://master.testnet.tomochain.com"
-
     # store the whole response with the status at the and
     HTTP_RESPONSE=$(curl --silent --write-out "HTTPSTATUS:%{http_code}" -X GET ${TOMOMASTER}/api/candidates/${COINBASE_ADDRESS}/isCandidate)
 

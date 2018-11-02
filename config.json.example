@@ -1,5 +1,6 @@
 {
     "doApiToken": "xxx",
+    "mainPublicIp": "xxx",
     "coinbasePrivateKeySun": "xxx",
     "coinbasePrivateKeyMoon": "xxx",
     "coinbasePrivateKeyEarth": "xxx",

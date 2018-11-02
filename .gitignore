@@ -1,5 +1,7 @@
 .env*
+.pwd
 .*.sw*
 *.log
 config.json
 .vagrant
+nodes
