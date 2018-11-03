@@ -7,6 +7,7 @@ _interupt() {
 
 trap _interupt INT TERM
 
+source .env
 touch .pwd
 export $(cat .env | xargs)
 
