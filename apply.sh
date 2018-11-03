@@ -1,10 +1,10 @@
 #!/bin/bash
 
-source /.env
+source /vagrant/.env
+PROJECT_DIR="${HOME}/go/src/github.com/ethereum/go-ethereum"
 
-nodeContainerId=`docker ps -qf name=tomochain`
-chainBlockNumber=`docker exec ${nodeContainerId} tomo attach "${RPC_URL}" --exec 'eth.blockNumber'`
-nodeBlockNumber=`docker exec ${nodeContainerId} tomo attach data/tomo.ipc --exec 'eth.blockNumber'`
+chainBlockNumber=`${PROJECT_DIR}/build/bin/tomo attach "${RPC_URL}" --exec 'eth.blockNumber'`
+nodeBlockNumber=`${PROJECT_DIR}/build/bin/tomo attach /vagrant/node/tomo.ipc --exec 'eth.blockNumber'`
 echo $chainBlockNumber
 echo $nodeBlockNumber
  
