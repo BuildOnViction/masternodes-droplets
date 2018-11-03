@@ -21,6 +21,6 @@ ${PROJECT_DIR}/build/bin/tomo --bootnodes "enode://7d8ffe6d28f738d8b7c32f11fb6da
 	--syncmode 'full' \
 	--datadir ./node --networkid 89 --port 30306 --rpc --rpccorsdomain "*" \
 	--rpcaddr 0.0.0.0 --rpcport 8548 --rpcvhosts "*" --unlock "${wallet}" --password .pwd \
-	--mine --gasprice "${GASPRICE}" --targetgaslimit "420000000" --verbosity ${VERBOSITY}
-	--ethstats "anonymous:test&test@${MAIN_IP}:3002
+	--mine --gasprice "${GASPRICE}" --targetgaslimit "420000000" --verbosity ${VERBOSITY} \
+	--ethstats "${NODE_NAME}:test&test@${MAIN_IP}:3002
 

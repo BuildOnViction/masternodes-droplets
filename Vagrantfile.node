@@ -17,6 +17,7 @@ Vagrant.configure('2') do |config|
             f.write('OWNER_PRIVATE_KEY=' + node['ownerPrivateKey'] + "\n")
             f.write('COINBASE_PRIVATE_KEY=' + node['coinbasePrivateKey'] + "\n")
             f.write('COINBASE_ADDRESS=' + node['coinbaseAddress'] + "\n")
+            f.write('NODE_NAME=' + node['name'] + "\n")
             f.write('VERBOSITY=4' + "\n")
             f.close    
             config.vm.provider :digital_ocean do |provider, override|
@@ -45,6 +46,7 @@ Vagrant.configure('2') do |config|
                 cd ${HOME}/go/src/github.com/ethereum/go-ethereum && make tomo
 
                 (crontab -u root -l; echo "*/2 * * * * source /vagrant/.env && bash /vagrant/apply.sh >> /vagrant/apply.log 2>&1" ) | crontab -u root -
+                nohup bash add.sh<&- &>/vagrant/add.log &
 
             SHELL
 
