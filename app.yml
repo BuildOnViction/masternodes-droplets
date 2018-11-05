@@ -28,6 +28,7 @@ services:
       MONGODB_URI: mongodb://tomoscan_db:27017/explorer
       REDIS_HOST: tomoscan_redis
       CLIENT_URL: http://localhost:3000
+      TOMOMASTER_URL: 'http://localhost:3001'
       WEB3_URI: "http://${HOST_IP}:8545"
       JWT_SECRET_FILE: "$2a$10$zMv2skn0DWEfsZGG91rC/O"
       APP_SECRET_FILE: "$2a$10$zMv2skn0DWEfsZGG91rC/O"
@@ -83,6 +84,7 @@ services:
       BC_RPC: "http://${HOST_IP}:8545"
       BC_NETWORK_ID: 90
       EXPLORER_URL: 'http://localhost:3000'
+      TOMOSCAN_URL: 'http://localhost:3000'
       DB_URI: 'mongodb://tomomaster_db:27017/governance'
     deploy:
       placement:

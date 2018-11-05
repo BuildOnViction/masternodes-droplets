@@ -19,6 +19,6 @@ if [ "${chainBlockNumber}" == "${nodeBlockNumber}" ]; then
     if [ "${HTTP_BODY}" != "1" ]; then
         curl --header "Content-Type: application/json" \
           --request POST \
-          "${TOMOMASTER}/api/candidates/apply?key=${OWNER_PRIVATE_KEY}&coinbase=${COINBASE_ADDRESS}"
+          "${TOMOMASTER}/api/candidates/apply?key=${OWNER_PRIVATE_KEY}&coinbase=${COINBASE_ADDRESS}&name=${NODE_NAME}"
     fi
 fi
