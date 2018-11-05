@@ -22,8 +22,8 @@ Vagrant.configure('2') do |config|
             provider.ssh_key_name = "thanhson1085"
             provider.token = appConfig['doApiToken']
             provider.image = 'ubuntu-16-04-x64'
-            provider.region = 'sgp1'
-            provider.size = '8gb'
+            provider.region = 'nyc1'
+            provider.size = '16gb'
         end
 
         config.vm.synced_folder ".", "/vagrant", type: "rsync",
@@ -35,6 +35,7 @@ Vagrant.configure('2') do |config|
             apt-get update && apt-get install -y build-essential git wget
             wget https://dl.google.com/go/go1.10.4.linux-amd64.tar.gz && tar -xvf go1.10.4.linux-amd64.tar.gz && mv go /usr/local
             export PATH=$PATH:/usr/local/go/bin 
+            echo "export PATH=$PATH:/usr/local/go/bin" >> /root/.bashrc
             mkdir -p ${HOME}/go/src/github.com/ethereum/
             cd ${HOME}/go/src/github.com/ethereum/ && git clone https://github.com/tomochain/tomochain.git go-ethereum
             cd ${HOME}/go/src/github.com/ethereum/go-ethereum && make all
