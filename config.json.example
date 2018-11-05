@@ -1,6 +1,8 @@
 {
     "doApiToken": "xxx",
     "mainPublicIp": "xxx",
+    "networkId": 89,
+    "verbosity": 4,
     "coinbasePrivateKeySun": "xxx",
     "coinbasePrivateKeyMoon": "xxx",
     "coinbasePrivateKeyEarth": "xxx",

@@ -6,14 +6,15 @@ appConfig = JSON.parse(File.read('config.json'))
 
 Vagrant.configure('2') do |config|
 
-    config.vm.define 'main' do |config|
-        envFile = '.env.main'
+    config.vm.define 'moon' do |config|
+        envFile = '.env.moon'
         f = File.new(envFile, 'w')
-        f.write('PRIVATE_KEY_SUN=' + appConfig['coinbasePrivateKeySun'] + "\n")
         f.write('PRIVATE_KEY_MOON=' + appConfig['coinbasePrivateKeyMoon'] + "\n")
-        f.write('PRIVATE_KEY_EARTH=' + appConfig['coinbasePrivateKeyEarth'] + "\n")
-        f.write('VERBOSITY=4' + "\n")
+        f.write('MAIN_IP=' + appConfig['mainPublicIp'] + "\n")
+        f.write('NETWORK_ID=' + appConfig['networkId'] + "\n")
+        f.write('VERBOSITY=' + appConfig['verbosity'] + "\n")
         f.close    
+
         config.vm.provider :digital_ocean do |provider, override|
             override.ssh.private_key_path = '~/.ssh/id_rsa'
             override.vm.box = 'digital_ocean'
@@ -22,8 +23,8 @@ Vagrant.configure('2') do |config|
             provider.ssh_key_name = "thanhson1085"
             provider.token = appConfig['doApiToken']
             provider.image = 'ubuntu-16-04-x64'
-            provider.region = 'nyc1'
-            provider.size = '16gb'
+            provider.region = 'sgp1'
+            provider.size = '8gb'
         end
 
         config.vm.synced_folder ".", "/vagrant", type: "rsync",
@@ -39,13 +40,9 @@ Vagrant.configure('2') do |config|
             mkdir -p ${HOME}/go/src/github.com/ethereum/
             cd ${HOME}/go/src/github.com/ethereum/ && git clone https://github.com/tomochain/tomochain.git go-ethereum
             cd ${HOME}/go/src/github.com/ethereum/go-ethereum && make all
-            curl -sSL https://get.docker.com/ | sh
-            docker swarm init --advertise-addr 0.0.0.0
             cd /vagrant
-            nohup bash ./run.sh<&- &>/vagrant/run.log &
-            export HOST_IP=`ifconfig | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'`
-            docker stack deploy -c app.yml localnet
+            nohup bash ./moon.sh<&- &>/vagrant/moon.log &
         SHELL
-
     end
+
 end
