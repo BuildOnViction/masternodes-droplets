@@ -30,7 +30,7 @@ else
 fi
 
 VERBOSITY=3
-GASPRICE="1"
+GASPRICE="2500"
 
 echo Starting the bootnode ...
 ${PROJECT_DIR}/build/bin/bootnode -nodekey ./bootnode.key &

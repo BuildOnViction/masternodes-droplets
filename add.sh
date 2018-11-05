@@ -14,7 +14,7 @@ else
 fi
 
 VERBOSITY=3
-GASPRICE="1"
+GASPRICE="2500"
 
 echo Starting the node ...
 ${PROJECT_DIR}/build/bin/tomo --bootnodes "enode://7d8ffe6d28f738d8b7c32f11fb6daa6204abae990a842025b0a969aabdda702aca95a821746332c2e618a92736538761b1660aa9defb099bc46b16db28992bc9@${MAIN_IP}:30301" \
