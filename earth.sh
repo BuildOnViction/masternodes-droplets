@@ -1,12 +1,4 @@
 #!/bin/bash
-_interupt() { 
-    echo "Shutdown $child_proc"
-    kill -TERM $child_proc
-    exit
-}
-
-trap _interupt INT TERM
-
 source .env
 touch .pwd
 export $(cat .env | xargs)
@@ -25,10 +17,5 @@ fi
 
 GASPRICE="2500"
 
-echo Starting the bootnode ...
-${PROJECT_DIR}/build/bin/bootnode -nodekey ./bootnode.key &
-child_proc=$! 
-
 echo Starting the nodes ...
-${PROJECT_DIR}/build/bin/tomo --bootnodes "enode://7d8ffe6d28f738d8b7c32f11fb6daa6204abae990a842025b0a969aabdda702aca95a821746332c2e618a92736538761b1660aa9defb099bc46b16db28992bc9@${MAIN_IP}:30301" --syncmode "full" --datadir ./earth --networkid ${NETWORK_ID} --port 30303 --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8545 --maxpeers 200 --rpcvhosts "*" --unlock "${wallet}" --password ./.pwd --mine --gasprice "${GASPRICE}" --targetgaslimit "420000000" --verbosity ${VERBOSITY} --ethstats "earth:test&test@${MAIN_IP}:3002" &
-child_proc="$child_proc $!"
+${PROJECT_DIR}/build/bin/tomo --bootnodes "enode://7d8ffe6d28f738d8b7c32f11fb6daa6204abae990a842025b0a969aabdda702aca95a821746332c2e618a92736538761b1660aa9defb099bc46b16db28992bc9@${MAIN_IP}:30301" --syncmode "full" --datadir ./earth --networkid ${NETWORK_ID} --port 30303 --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8545 --maxpeers 200 --rpcvhosts "*" --unlock "${wallet}" --password ./.pwd --mine --gasprice "${GASPRICE}" --targetgaslimit "420000000" --verbosity ${VERBOSITY} --ethstats "earth:test&test@${MAIN_IP}:3002"
