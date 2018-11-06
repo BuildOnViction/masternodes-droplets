@@ -11,8 +11,8 @@ Vagrant.configure('2') do |config|
         f = File.new(envFile, 'w')
         f.write('PRIVATE_KEY_MOON=' + appConfig['coinbasePrivateKeyMoon'] + "\n")
         f.write('MAIN_IP=' + appConfig['mainPublicIp'] + "\n")
-        f.write('NETWORK_ID=' + appConfig['networkId'] + "\n")
-        f.write('VERBOSITY=' + appConfig['verbosity'] + "\n")
+        f.write('NETWORK_ID=' + appConfig['networkId'].to_s + "\n")
+        f.write('VERBOSITY=' + appConfig['verbosity'].to_s + "\n")
         f.close    
 
         config.vm.provider :digital_ocean do |provider, override|
