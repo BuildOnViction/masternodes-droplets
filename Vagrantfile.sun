@@ -40,11 +40,11 @@ Vagrant.configure('2') do |config|
             cd ${HOME}/go/src/github.com/ethereum/go-ethereum && make all
             curl -sSL https://get.docker.com/ | sh
             export HOST_IP=`ifconfig | grep 'inet addr:'| grep -v '127.0.0.1' | grep -v '172.*' | cut -d: -f2 | awk '{ print $1}'`
-            echo ${HOST_IP}
             docker swarm init --advertise-addr ${HOST_IP}
             cd /vagrant
-            nohup bash ./sun.sh<&- &>/vagrant/sun.log &
+            nohup bash ./sun.sh<&- &>/vagrant/node.log &
             source .env && docker stack deploy -c app.yml localnet
+            echo "HOST_IP ${HOST_IP}"
         SHELL
     end
 

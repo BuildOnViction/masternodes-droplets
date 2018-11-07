@@ -4,9 +4,21 @@
     "networkId": 89,
     "verbosity": 4,
     "coinbasePrivateKeySun": "xxx",
-    "coinbasePrivateKeyMoon": "xxx",
-    "coinbasePrivateKeyEarth": "xxx",
     "nodes": [
+        {
+            "name": "moon",
+            "coinbaseAddress": "xxx",
+            "coinbasePrivateKey": "xxx",
+            "ownerPrivateKey": "xxx",
+            "region": "nyc1"
+        },
+        {
+            "name": "earth",
+            "coinbaseAddress": "xxx",
+            "coinbasePrivateKey": "xxx",
+            "ownerPrivateKey": "xxx",
+            "region": "nyc1"
+        },
         {
             "name": "anonymous1",
             "coinbaseAddress": "xxx",
