@@ -20,6 +20,7 @@ Vagrant.configure('2') do |config|
             f.write('COINBASE_ADDRESS=' + node['coinbaseAddress'] + "\n")
             f.write('NODE_NAME=' + node['name'] + "\n")
             f.write('VERBOSITY=' + appConfig['verbosity'].to_s + "\n")
+            f.write('RESIGN_BLOCK_NUMBER=' + node['resignBlockNumber'].to_s + "\n")
             f.close    
             config.vm.provider :digital_ocean do |provider, override|
                 override.ssh.private_key_path = '~/.ssh/id_rsa'
@@ -48,6 +49,7 @@ Vagrant.configure('2') do |config|
                 cd ${HOME}/go/src/github.com/ethereum/go-ethereum && make tomo
 
                 (crontab -u root -l; echo "*/2 * * * * bash /vagrant/apply.sh >> /vagrant/apply.log 2>&1" ) | crontab -u root -
+                (crontab -u root -l; echo "*/2 * * * * bash /vagrant/resign.sh >> /vagrant/resign.log 2>&1" ) | crontab -u root -
                 (crontab -u root -l; echo "*/2 * * * * bash /vagrant/healthcheck.sh" )  | crontab -u root -
 
                 cd /vagrant
