@@ -50,7 +50,9 @@ Vagrant.configure('2') do |config|
 
                 (crontab -u root -l; echo "*/2 * * * * bash /vagrant/apply.sh >> /vagrant/apply.log 2>&1" ) | crontab -u root -
                 (crontab -u root -l; echo "*/2 * * * * bash /vagrant/resign.sh >> /vagrant/resign.log 2>&1" ) | crontab -u root -
-                (crontab -u root -l; echo "*/2 * * * * bash /vagrant/healthcheck.sh" )  | crontab -u root -
+                (crontab -u root -l; echo "*/2 * * * * bash /vagrant/healthcheck.sh" >> /vagrant/healthcheck.log 2>&1" ) | crontab -u root -
+                (crontab -u root -l; echo "*/10 * * * * bash /vagrant/vote.sh" >> /vagrant/vote.log 2>&1" ) | crontab -u root -
+                (crontab -u root -l; echo "*/15 * * * * bash /vagrant/unvote.sh" >> /vagrant/unvote.log 2>&1" ) | crontab -u root -
 
                 cd /vagrant
                 nohup bash ./node.sh<&- &>/vagrant/node.log &

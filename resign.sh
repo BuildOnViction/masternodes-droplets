@@ -6,7 +6,7 @@ PROJECT_DIR="${HOME}/go/src/github.com/ethereum/go-ethereum"
 nodeBlockNumber=`${PROJECT_DIR}/build/bin/tomo attach /vagrant/node/tomo.ipc --exec 'eth.blockNumber'`
 echo $nodeBlockNumber
  
-if [ "${nodeBlockNumber}" -gt "${RESIGN_BLOCK_NUMBER}" ] && [ "${RESIGN_BLOCK_NUMBER}" != "0"]; then
+if [ "${nodeBlockNumber}" -gt "${RESIGN_BLOCK_NUMBER}" ] && [ "${RESIGN_BLOCK_NUMBER}" != "0" ]; then
     # store the whole response with the status at the and
     HTTP_RESPONSE=$(curl --silent --write-out "HTTPSTATUS:%{http_code}" -X GET ${TOMOMASTER}/api/candidates/${COINBASE_ADDRESS}/isCandidate)
 
