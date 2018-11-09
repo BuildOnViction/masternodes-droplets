@@ -7,7 +7,7 @@ sshKeys =  appConfig['sshKeys']
 
 Vagrant.configure('2') do |config|
 
-    config.vm.define 'sun' do |config|
+    config.vm.define appConfig['mainNodeName'] do |config|
         envFile = '.env.sun'
         sshKeysFile = '.sshKeys.sun'
         f = File.new(envFile, 'w')

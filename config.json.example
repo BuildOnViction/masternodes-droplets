@@ -1,5 +1,6 @@
 {
     "doApiToken": "xxx",
+    "mainNodeName": "sun",
     "mainPublicIp": "xxx",
     "sshKeyName": "son-work",
     "privateKeyPath": "~/.ssh/id_rsa",
