@@ -3,6 +3,7 @@
     "mainPublicIp": "xxx",
     "networkId": 89,
     "verbosity": 4,
+    "sshKeys": [],
     "coinbasePrivateKeySun": "xxx",
     "nodes": [
         {
