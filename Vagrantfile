@@ -22,7 +22,7 @@ Vagrant.configure('2') do |config|
                 override.vm.box = 'digital_ocean'
                 override.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
                 override.nfs.functional = false
-                provider.ssh_key_name = "thanhson1085"
+                provider.ssh_key_name = "son-work"
                 provider.token = appConfig['doApiToken']
                 provider.image = 'ubuntu-16-04-x64'
                 provider.region = node['region']
