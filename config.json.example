@@ -1,6 +1,8 @@
 {
     "doApiToken": "xxx",
     "mainPublicIp": "xxx",
+    "sshKeyName": "son-work",
+    "privateKeyPath": "~/.ssh/id_rsa",
     "networkId": 89,
     "verbosity": 4,
     "sshKeys": [],
