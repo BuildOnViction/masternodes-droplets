@@ -27,8 +27,8 @@ services:
     environment:
       MONGODB_URI: mongodb://tomoscan_db:27017/explorer
       REDIS_HOST: tomoscan_redis
-      CLIENT_URL: http://localhost:3000
-      TOMOMASTER_URL: 'http://localhost:3001'
+      CLIENT_URL: "http://${HOST_IP}:3000"
+      TOMOMASTER_URL: "http://${HOST_IP}:3001"
       WEB3_URI: "http://${HOST_IP}:8545"
       JWT_SECRET_FILE: "$2a$10$zMv2skn0DWEfsZGG91rC/O"
       APP_SECRET_FILE: "$2a$10$zMv2skn0DWEfsZGG91rC/O"
