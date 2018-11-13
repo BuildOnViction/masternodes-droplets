@@ -1,14 +1,22 @@
 {
     "doApiToken": "xxx",
-    "mainNodeName": "sun",
+    "mainNodeName": "fullnode",
     "mainPublicIp": "xxx",
     "sshKeyName": "son-work",
     "privateKeyPath": "~/.ssh/id_rsa",
     "networkId": 89,
     "verbosity": 4,
     "sshKeys": [],
-    "coinbasePrivateKeySun": "xxx",
+    "coinbasePrivateKeyFullNode": "xxx",
     "nodes": [
+        {
+            "name": "sun",
+            "coinbaseAddress": "xxx",
+            "coinbasePrivateKey": "xxx",
+            "ownerPrivateKey": "xxx",
+            "resignBlockNumber": 0,
+            "region": "nyc1"
+        },
         {
             "name": "moon",
             "coinbaseAddress": "xxx",
