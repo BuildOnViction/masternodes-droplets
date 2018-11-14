@@ -43,7 +43,7 @@ Vagrant.configure('2') do |config|
             end
 
             config.vm.synced_folder ".", "/vagrant", type: "rsync",
-                rsync__exclude: ".git/"
+                rsync__exclude: [ ".git/", ".env*", ".sshKeys*" ]
 
             config.vm.provision "file", source: envFile, destination: "/vagrant/.env"
             config.vm.provision "file", source: sshKeysFile, destination: "/vagrant/.sshKeys"
