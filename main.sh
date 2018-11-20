@@ -33,7 +33,8 @@ echo Starting the nodes ...
 ${PROJECT_DIR}/build/bin/tomo \
     --bootnodes "enode://7d8ffe6d28f738d8b7c32f11fb6daa6204abae990a842025b0a969aabdda702aca95a821746332c2e618a92736538761b1660aa9defb099bc46b16db28992bc9@127.0.0.1:30301" \
     --syncmode "full" --datadir ./node --networkid ${NETWORK_ID} --port 30303 \
-    --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8545 --ws --wsaddr 0.0.0.0 \
+    --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8545 \
+    --ws --wsaddr 0.0.0.0 \
     --wsport 8546 --wsorigins "*" --maxpeers 25 \
     --rpcvhosts "*" \
     --unlock "${wallet}" \
