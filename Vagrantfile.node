@@ -39,7 +39,7 @@ Vagrant.configure('2') do |config|
                 provider.token = appConfig['doApiToken']
                 provider.image = 'ubuntu-18-04-x64'
                 provider.region = node['region']
-                provider.size = 'c-2'
+                provider.size = 'c-4'
             end
 
             config.vm.synced_folder ".", "/vagrant", type: "rsync",
