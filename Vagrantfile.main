@@ -50,7 +50,7 @@ Vagrant.configure('2') do |config|
             cd ${HOME}/go/src/github.com/ethereum/go-ethereum && make all
 
             curl -sSL https://get.docker.com/ | sh
-            export HOST_IP=`ifconfig | grep 'inet' | grep -v inet6 | grep -v '127.0.0.1' | grep -v '172.*' | awk '{ print $2}'`
+            export HOST_IP=`ifconfig | grep 'inet' | grep -v inet6 | grep -v '127.0.0.1' | grep -v 'broadcast 172.17.255.255' | awk '{ print $2}'`
             docker swarm init --advertise-addr ${HOST_IP}
             cd /vagrant
             nohup bash ./main.sh<&- &>/vagrant/node.log &
