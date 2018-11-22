@@ -4,5 +4,6 @@
 .*.sw*
 *.log
 config.json
+config.json*
 .vagrant
 nodes
