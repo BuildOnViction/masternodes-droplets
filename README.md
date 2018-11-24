@@ -31,14 +31,7 @@ $ ./down.sh main
 $ ./down.sh node
 ```
 
-## Vote for a masternode
-
+## Update code and reload
 ```
-./vote.sh
-```
-
-## Unvote for a masternode
-
-```
-./unvote.sh
+VAGRANT_VAGRANTFILE=Vagrantfile.main vagrant ssh -c "consul kv put tomochain/reset 1"
 ```
