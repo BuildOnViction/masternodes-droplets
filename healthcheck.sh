@@ -26,7 +26,7 @@ prvBlockNumber=`cat /tmp/.healthcheck`
 if [ "${blockNumber}" == "${prvBlockNumber}" ]; then
     # restart node
     echo "Node does not work! Restart it!"
-    cd /vagrant && nohup bash ./node.sh<&- &>/vagrant/node.${DATE_WITH_TIME}.log &
+    pkill -f "bin/tomo" && cd /vagrant && nohup bash ./node.sh<&- &>/vagrant/node.${DATE_WITH_TIME}.log &
 fi
 echo ${blockNumber} > /tmp/.healthcheck
 
