@@ -12,7 +12,7 @@ echo Local $LOCAL Base $BASE Remote $REMOTE
 if [ $LOCAL != $REMOTE ] && [ $LOCAL == $BASE ]; then
     echo "Stop node!"
     pkill -f "bin/tomo"
-    git pull origin master && make all
+    git pull origin && make all
     echo "Restart it!"
     cd /vagrant && nohup bash ./node.sh<&- &>/vagrant/node.reset.${DATE_WITH_TIME}.log &
 else
