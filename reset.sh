@@ -2,7 +2,7 @@
 
 PROJECT_DIR="${HOME}/go/src/github.com/ethereum/go-ethereum"
 DATE_WITH_TIME=`date "+%Y%m%d-%H%M%S"`
-cd ${PROJECT_DIR} 
+cd ${PROJECT_DIR} && git fetch origin
 
 LOCAL=$(git rev-parse @)
 REMOTE=$(git rev-parse @{u})
