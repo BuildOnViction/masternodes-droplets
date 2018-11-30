@@ -100,7 +100,6 @@ services:
       BC_WS: "http://${HOST_IP}:8546"
       BC_NETWORK_ID: "$NETWORK_ID" 
       DB_URI: 'mongodb://tomomaster_db:27017/governance'
-      REDIS_HOST: 'tomomaster_redis'
     deploy:
       placement:
         constraints:
@@ -110,13 +109,6 @@ services:
     image: mongo:3.6
     volumes:
       - tomomaster_data:/data/db
-    deploy:
-      placement:
-        constraints:
-          - node.role == manager
-
-  tomomaster_redis:
-    image: redis:4-alpine
     deploy:
       placement:
         constraints:
