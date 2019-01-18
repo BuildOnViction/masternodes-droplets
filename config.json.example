@@ -7,6 +7,8 @@
     "networkId": 89,
     "verbosity": 4,
     "sshKeys": [],
+    "gitRepo": "https://github.com/tomochain/tomochain.git",
+    "gitBrand": "master",
     "coinbasePrivateKeyFullNode": "xxx",
     "nodes": [
         {

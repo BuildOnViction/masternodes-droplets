@@ -15,6 +15,8 @@ Vagrant.configure('2') do |config|
         f.write('NETWORK_ID=' + appConfig['networkId'].to_s + "\n")
         f.write('VERBOSITY=' + appConfig['verbosity'].to_s + "\n")
         f.write('NODE_NAME=' + appConfig['mainNodeName'].to_s + "\n")
+        f.write('GIT_REPO=' + appConfig['gitRepo'].to_s + "\n")
+        f.write('GIT_BRAND=' + appConfig['gitBrand'].to_s + "\n")
         f.close    
         f = File.new(sshKeysFile, 'w')
         sshKeys.each do |sshKey|
@@ -46,7 +48,7 @@ Vagrant.configure('2') do |config|
             export PATH=$PATH:/usr/local/go/bin 
             echo "export PATH=$PATH:/usr/local/go/bin" >> /root/.bashrc
             mkdir -p ${HOME}/go/src/github.com/ethereum/
-            cd ${HOME}/go/src/github.com/ethereum/ && git clone https://github.com/tomochain/tomochain.git go-ethereum
+            source .env && cd ${HOME}/go/src/github.com/ethereum/ && git clone ${GIT_REPO} go-ethereum && cd go-ethereum && git checkout origin/${GIT_BRAND}
             cd ${HOME}/go/src/github.com/ethereum/go-ethereum && make all
 
             curl -sSL https://get.docker.com/ | sh
